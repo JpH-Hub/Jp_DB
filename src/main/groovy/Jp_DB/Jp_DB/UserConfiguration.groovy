@@ -9,8 +9,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 class UserConfiguration {
 
     @Bean
-    UserController userController(UserRepository userRepository){
-        return new UserController(userRepository)
+    UserController userController(UserService userService){
+        return new UserController(userService)
+    }
+
+    @Bean
+    UserService userService(UserRepository userRepository){
+        return new UserService(userRepository)
     }
 
 
