@@ -22,24 +22,24 @@ class UserController {
     }
 
     @GetMapping
-    List<User> getAllUsers(){
+    List<UserEntity> getAllUsers(){
         userRepository.findAll()
     }
 
     @GetMapping("/{id}")
-    User getUserById(@PathVariable Long id) {
+    UserEntity getUserById(@PathVariable Long id) {
         userRepository.findById(id).orElseThrow {
             new RuntimeException("User not found with id: $id")
         }
     }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    User createUser(@RequestBody User user) {
+    UserEntity createUser(@RequestBody UserEntity user) {
         userRepository.save(user)
     }
     @PutMapping("/{id}")
-    User updateUser(@PathVariable Long id, @RequestBody User userDetails) {
-        User user = userRepository.findById(id).orElseThrow {
+    UserEntity updateUser(@PathVariable Long id, @RequestBody UserEntity userDetails) {
+        UserEntity user = userRepository.findById(id).orElseThrow {
             new RuntimeException("User not found with id: $id")
         }
         user.name = userDetails.name
@@ -49,7 +49,7 @@ class UserController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteUser(@PathVariable Long id) {
-        User user = userRepository.findById(id).orElseThrow {
+        UserEntity user = userRepository.findById(id).orElseThrow {
             new RuntimeException("User not found with id: $id")
         }
         userRepository.delete(user)

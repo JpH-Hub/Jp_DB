@@ -20,7 +20,6 @@ repositories {
 dependencies {
 
 	runtimeOnly 'org.postgresql:postgresql'
-	implementation 'org.codehaus.groovy:groovy'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter'
